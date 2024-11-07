@@ -104,7 +104,7 @@ function setup() {
 }
 
 function draw() {
-  background(37, 37, 64);
+  background(0, 0, 140);
   let nuevaParticula = new Particula(mouseX, mouseY);
   particulas.push(nuevaParticula);
 
@@ -113,10 +113,52 @@ function draw() {
     particulas[i].display();
   }
 
-  for (let i = 0; i < particulas.length; i++) {
-    if (!particulas[i].itIsAlive) {
-      particulas.splice(i, 1);
-    }
+  particulas = particulas.filter((pelota) => pelota.itIsAlive);
+
+  noFill();
+  stroke(200, 255, 250);
+  strokeWeight(1);
+
+  for (let i = 0; i < particulas.length - 1; i++) {
+    line(
+      particulas[i].posX,
+      particulas[i].posY,
+      particulas[i + 1].posX,
+      particulas[i + 1].posY
+    );
   }
+
   console.log(particulas.length);
 }
+//   background(37, 37, 64);
+
+//   let nuevaParticula = new Particula(mouseX, mouseY);
+//   particulas.push(nuevaParticula);
+
+//   for (let i = 0; i < particulas.length; i++) {
+//     particulas[i].update();
+//     particulas[i].display();
+//   }
+
+//   // for (let i = 0; i < particulas.length; i++) {
+//   //   if (!particulas[i].itIsAlive) {
+//   //     particulas.splice(i, 1);
+//   //   }
+//   // }
+//   particulas = particulas.filter((pelota) => pelota.itIsAlive);
+
+//   noFill();
+//   stroke(250, 99, 145);
+//   strokeWeight(1);
+
+// //   for (let i = 0; i < particulas.length - 1; i++) {
+// //     //  if (particulas[i+1]!== undefined)
+// //   }
+// //   line(
+// //     particulas[i].posX,
+// //     particulas[i].posY,
+// //     particulas[i + 1].posX,
+// //     particulas[i + 1].posY
+// //   );
+// // }
+// // console.log(particulas.length);
